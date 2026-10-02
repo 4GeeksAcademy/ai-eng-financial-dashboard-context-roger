@@ -25,3 +25,14 @@ El analisis de la sesion previa es una pista, no una prueba actual. El arranque,
 - Se confirmó que frontend/.env.local está ignorado por Git.
 - Se repitió npm run build dentro del contenedor: compilación correcta. Vite avisa de un bundle de más de 500 kB; es un aviso, no un fallo de compilación.
 - El editor muestra un error por vite/client. En el workspace existe node_modules pero falta frontend/node_modules/vite/client.d.ts. Las dependencias del contenedor sí permiten compilar. No se cambió tsconfig para ocultar el diagnóstico.
+
+## Fase 2 — 2026-10-02
+
+- ✅ Se volvió a leer AGENTS.md; .agents/rules, .agents/skills y memory-bank siguen ausentes antes de esta fase.
+- ✅ Se contrastaron contrato, consumidor, cálculos, fechas y estructura con el código actual del Codespace. Referencias en docs/engineering-findings.md (H1–H8).
+- ✅ Se confirmó frontend/package-lock.json versionado con git ls-files; no se asume ausencia de lockfile.
+- ✅ Cada propuesta R1–R5 en docs/proposed-rules.md identifica alcance, evidencia y una tarea real prevista con criterio de validación.
+- ✅ Se comprobó la existencia de los archivos fuente citados y se revisó el diff de la documentación.
+- ❓ El riesgo de zona horaria de H3 se infiere del código; todavía falta reproducirlo. La causa exacta del problema de red de fase 1 continúa sin determinarse.
+- Pendiente: implementar y validar reglas en fase 3; crear memory-bank en fase 4; revisión personal del alumno y push final.
+- Esta fase modifica únicamente documentación. No se repiten pruebas de aplicación: los resultados de fase 1 siguen siendo evidencia histórica, no un nuevo resultado de esta sesión.
