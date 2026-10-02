@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 
 import {
+  computeDataPeriod,
   computeKPIs,
   computeMonthlyData,
   formatCurrency,
@@ -110,5 +111,28 @@ describe("formatters", () => {
 
   it("formats percent with one decimal", () => {
     expect(formatPercent(15.555)).toBe("15.6%");
+  });
+});
+
+describe("calendar dates", () => {
+  it("keeps first-day movements in their calendar month and year", () => {
+    const movements: FinancialMovement[] = [
+      { ...sampleMovements[0], create_date: "2026-01-01", amount: 100 },
+      { ...sampleMovements[0], create_date: "2025-12-01", amount: 200 },
+    ];
+    expect(computeMonthlyData(movements).map(({ month, income }) => ({ month, income })))
+      .toEqual([{ month: "Dec 2025", income: 200 }, { month: "Jan 2026", income: 100 }]);
+  });
+});
+
+describe("computeDataPeriod", () => {
+  it("uses the actual first and last date even when data is unsorted", () => {
+    expect(computeDataPeriod([...sampleMovements].reverse())).toBe("2024-01-10 - 2024-02-01");
+  });
+  it("handles an empty dataset without claiming a period", () => {
+    expect(computeDataPeriod([])).toBe("No financial data");
+  });
+  it("shows a single date for one movement", () => {
+    expect(computeDataPeriod([sampleMovements[0]])).toBe("2024-01-10");
   });
 });

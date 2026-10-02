@@ -41,3 +41,7 @@ Usar el setup documentado con Docker Compose. Ante problemas de comunicación, c
 Antes de actuar, consultar las ubicaciones indicadas por AGENTS.md. Para cada afirmación técnica, indicar archivo y símbolo o una comprobación observable. Separar hecho verificado, inferencia y pendiente; distinguir API implementada de interfaz que la utiliza. Actualizar el rastro de verificación cuando cambie una conclusión. Revisar el diff y guardar un commit por fase; excluir .env.local, dependencias y artefactos generados. No atribuir al alumno revisiones personales que no haya realizado.
 
 **Tarea real prevista:** corregir la documentación del período y estado actual tras las tareas anteriores, revisando referencias y el diff. **Criterio:** afirmaciones coherentes con el código final, pendientes explícitos y commit separado de fase 3.
+
+## Estado posterior — 2026-10-02
+
+Las propuestas anteriores son el registro de fase 2. En fase 3 se implementaron R1–R5 en .agents/rules y se refinaron después de las tareas reales descritas en docs/rules-validation.md. Sus resultados no se deben confundir con las tareas que todavía estaban previstas en este documento inicial.

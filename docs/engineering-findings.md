@@ -16,3 +16,7 @@ Análisis del código del Codespace después del commit 7262457. Los hechos, rie
 ## Alcance
 
 Estos hallazgos justifican instrucciones para mantener el proyecto y comprobar cambios pequeños. No justifican un rediseño, nuevas funcionalidades ni una refactorización general. Las validaciones propuestas pertenecen a la fase 3; no se presentan como realizadas.
+
+## Actualización tras validación — 2026-10-02
+
+H1–H8 describen lo observado en fase 2. En fase 3, H3 dejó de ser solo una inferencia: una prueba en America/Los_Angeles reprodujo movimientos del primer día agrupados en el mes anterior. Se corrigió usando el prefijo YYYY-MM y la prueba pasa en UTC y Los Ángeles. La etiqueta fija de 2024 también se sustituyó por el período calculado desde los datos. La causa exacta del problema de red de H5 continúa pendiente. Las cinco reglas ya están implementadas y se validaron con las tareas registradas en docs/rules-validation.md.

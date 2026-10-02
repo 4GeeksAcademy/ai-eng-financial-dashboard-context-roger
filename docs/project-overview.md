@@ -64,3 +64,11 @@ Las cuatro comprobaciones terminaron correctamente. El proxy devolvio JSON con 3
 - frontend/src/lib/mock-data.ts existe, pero App.tsx no lo importa como fuente activa.
 - Los datos son simulados. Una semilla fija no fija el periodo porque el generador consulta la fecha actual.
 - Las reglas y el memory-bank corresponden a fases posteriores; este resumen no demuestra su validacion.
+
+## Estado actualizado tras fase 3 — 2026-10-02
+
+La etiqueta fija de 2024 descrita en la fase 1 era el estado inicial; ahora App pasa el resultado de computeDataPeriod de financial-utils.ts al encabezado. Este cálculo muestra las fechas mínima y máxima reales, una fecha única o un mensaje cuando no hay datos. En esta sesión API y navegador mostraron 2025-10-02 - 2026-09-28; ese rango cambiará con la fecha de generación.
+
+Se confirmó y corrigió el riesgo de agrupación por zona horaria: computeMonthlyData ahora usa el prefijo YYYY-MM de create_date, sin convertir la fecha de calendario a hora local. Hay 9 pruebas del frontend correctas en UTC y America/Los_Angeles, 15 del backend correctas, build y lint correctos. Ver docs/rules-validation.md para tareas y límites.
+
+Existen cinco reglas en .agents/rules y su validación está documentada. memory-bank todavía está pendiente de fase 4; también quedan la revisión personal del alumno y el push final.

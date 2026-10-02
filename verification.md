@@ -36,3 +36,15 @@ El analisis de la sesion previa es una pista, no una prueba actual. El arranque,
 - ❓ El riesgo de zona horaria de H3 se infiere del código; todavía falta reproducirlo. La causa exacta del problema de red de fase 1 continúa sin determinarse.
 - Pendiente: implementar y validar reglas en fase 3; crear memory-bank en fase 4; revisión personal del alumno y push final.
 - Esta fase modifica únicamente documentación. No se repiten pruebas de aplicación: los resultados de fase 1 siguen siendo evidencia histórica, no un nuevo resultado de esta sesión.
+
+## Fase 3 — 2026-10-02
+
+- ✅ Se crearon cinco reglas con nombre, alcance, justificación y acciones en .agents/rules, derivadas de H1–H8.
+- ✅ Se aplicaron a tareas reales; docs/rules-validation.md registra instrucción aplicada, resultado y refinamiento de cada una.
+- ✅ Contrato comprobado con OpenAPI, tipos TypeScript y 360 movimientos mediante el proxy; script reproducible docs/check-api-contract.py.
+- ✅ H3 reproducido: 1 fallo y 5 pruebas correctas antes de la corrección. La agrupación ahora usa YYYY-MM sin hora local; 9 pruebas correctas en UTC y America/Los_Angeles después.
+- ✅ Período calculado en lib y pasado desde App al encabezado: API y navegador coinciden en 2025-10-02 - 2026-09-28 en esta sesión.
+- ✅ Backend: 15 pruebas correctas (una advertencia de TestClient); build y lint correctos. Build mantiene una advertencia por tamaño del bundle.
+- ✅ Se actualizó documentación distinguiendo historia y estado actual, se revisó el diff y se comprobó exclusión de .env.local y artefactos.
+- ❓ La causa exacta del fallo de red original no está determinada.
+- Pendiente: memory-bank en fase 4, revisión personal del alumno y push final. Estas comprobaciones fueron realizadas por el agente, no se atribuyen como revisión personal del alumno.
