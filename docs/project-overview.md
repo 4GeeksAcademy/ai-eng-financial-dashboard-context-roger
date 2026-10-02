@@ -72,3 +72,7 @@ La etiqueta fija de 2024 descrita en la fase 1 era el estado inicial; ahora App 
 Se confirmó y corrigió el riesgo de agrupación por zona horaria: computeMonthlyData ahora usa el prefijo YYYY-MM de create_date, sin convertir la fecha de calendario a hora local. Hay 9 pruebas del frontend correctas en UTC y America/Los_Angeles, 15 del backend correctas, build y lint correctos. Ver docs/rules-validation.md para tareas y límites.
 
 Existen cinco reglas en .agents/rules y su validación está documentada. memory-bank todavía está pendiente de fase 4; también quedan la revisión personal del alumno y el push final.
+
+## Estado actualizado tras fase 4 — 2026-10-02
+
+memory-bank ya existe con índice, producto, stack/ejecución y estado actual. Sus referencias se contrastaron con archivos reales y los commits de fases 1–3. La memoria distingue las pruebas históricas de fase 3 de esta revisión documental. Quedan la revisión personal del alumno, el push y la entrega final.

@@ -48,3 +48,13 @@ El analisis de la sesion previa es una pista, no una prueba actual. El arranque,
 - ✅ Se actualizó documentación distinguiendo historia y estado actual, se revisó el diff y se comprobó exclusión de .env.local y artefactos.
 - ❓ La causa exacta del fallo de red original no está determinada.
 - Pendiente: memory-bank en fase 4, revisión personal del alumno y push final. Estas comprobaciones fueron realizadas por el agente, no se atribuyen como revisión personal del alumno.
+
+## Fase 4 — 2026-10-02
+
+- ✅ Se leyeron AGENTS.md y las cinco reglas existentes antes de crear la memoria; .agents/skills y memory-bank no existían al comenzar.
+- ✅ memory-bank/README.md sirve de índice; product-overview.md documenta propósito y alcance; technical-context.md documenta stack, flujo y setup; current-state.md registra estado y prioridades de entrega.
+- ✅ Se contrastaron versiones declaradas con package.json, runtimes con Dockerfiles, servicios con Compose y estado actual con App/financial-utils y los commits 7262457, cad7589 y 2b7ff2a.
+- ✅ Se verificó que todos los enlaces locales de la memoria apuntan a archivos o directorios existentes y se revisó el diff.
+- ✅ La memoria no inventa una hoja de ruta: distingue datos simulados, API implementada, funciones usadas por App, resultados de fase 3 y límites pendientes.
+- Esta fase modifica solo documentación. No se ejecutaron nuevas pruebas de aplicación; las 9 pruebas frontend, 15 backend, build y lint citados son los resultados de fase 3.
+- Pendiente: revisión personal del alumno, push de los commits al fork y envío de la entrega. No se afirma que estas acciones estén realizadas.
