@@ -40,3 +40,11 @@ La fase 4 se conserva en el commit independiente que incorpora esta carpeta. Pen
 - Entregar la URL del repositorio según 4Geeks. El push y la entrega no se dan por realizados en esta memoria.
 
 No se propone una ampliación de funcionalidades. Si cambia el código, actualizar el estado con evidencia; mantener verification.md como historial de comprobaciones.
+
+## Actualización — 2026-10-05: entrega de especificaciones frontend
+
+La rama feature/frontend-specs añade contratos TypeScript verificados con OpenAPI activo, especificación de componentes y contrato de datos de filtro de fechas, anomalías y comparativa B2B/B2C. Fuentes y resultados en [frontend/specs/verification.md](../frontend/specs/verification.md); decisiones y casos de aceptación en [frontend/specs/README.md](../frontend/specs/README.md).
+
+La aplicación no implementa estas tres capacidades todavía. El backend mantiene alertas con media histórica; la especificación futura preserva el requisito de tres meses mediante summary y un cálculo local documentado. Las facetas son globales y el catálogo por grupo se deriva de movimientos de ingresos. Los porcentajes y los totales tampoco son campos del top de categorías.
+
+Comprobaciones actuales: servicios activos, health 200, esquemas y parámetros contrastados con OpenAPI, fechas inclusivas y límites individuales comprobados, compilación TypeScript de specs con strict=true y frontend src correcta. No se atribuyen nuevas pruebas visuales de funcionalidades sin implementar ni revisión personal al alumno. Consultar el historial Git de esta rama para los commits separados de tipos, componentes y contrato. La entrega al instructor sigue a cargo del alumno.

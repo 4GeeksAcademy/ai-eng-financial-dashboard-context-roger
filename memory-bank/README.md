@@ -1,6 +1,6 @@
 # Memoria del proyecto
 
-Última revisión: 2026-10-02. Contexto contrastado con el código del Codespace después de la fase 3 (commit 2b7ff2a).
+Última revisión: 2026-10-05. Los resultados previos se conservan como historia; ver la actualización de especificaciones en current-state.md. Revisión original: 2026-10-02. Contexto contrastado con el código del Codespace después de la fase 3 (commit 2b7ff2a).
 
 Antes de actuar, leer [AGENTS.md](../AGENTS.md), las [reglas del proyecto](../.agents/rules/) y esta memoria. Si existe .agents/skills, consultar también su contenido; no existe al crear esta memoria.
 
