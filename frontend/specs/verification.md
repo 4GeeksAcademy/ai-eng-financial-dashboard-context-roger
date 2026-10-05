@@ -57,3 +57,50 @@ docker compose exec -T frontend npx tsc --noEmit --project specs/tsconfig.json
 ~~~
 
 Abrir puerto privado 8000 y /docs en Codespaces. Antes de entregar, el alumno debe revisar las decisiones de ventana, meses parciales y catálogo derivado para poder explicarlas al instructor.
+
+## Segunda revisión contra el enunciado completo — 2026-10-05
+
+Se contrastaron las 28 casillas (cuatro fases y doce criterios), los cinco pasos de preparación, los tres outcomes del PM y el procedimiento de entrega. La trazabilidad está en [requirement-checklist.md](requirement-checklist.md). Cada funcionalidad contiene 8 casos de aceptación, frente al mínimo exigido de 2.
+
+Se detectó que las dependencias estaban disponibles solo en el volumen Docker y el editor no encontraba vite/client. Se ejecutó npm ci en frontend usando el lockfile existente, sin modificar package.json ni package-lock.json. El editor quedó con 0 errores y 0 advertencias. Se hizo independiente el tsconfig de specs (strict=true, types=[], include *.ts), evitando que esos contratos dependan de tipos de Vite. Se corrigió step=any en el control de umbral para no añadir una restricción de múltiplos no pedida por el PM.
+
+La auditoría repitió el contraste con OpenAPI vivo: enums compartidos, propiedades/requeridos/tipos de las cuatro respuestas, raíz array de tres respuestas, query opcional y límites/defaults de threshold/limit. Se comprobaron fechas individuales inclusivas, estados vacíos reales de anomalías y de top/movimientos para ambos grupos, JSDoc por propiedad, ausencia de any/object, formatos de tablas y ausencia de cambios en código de aplicación/backend/dependencias. Se ejecutaron las tres comprobaciones TypeScript desde la terminal normal y la de specs dentro de Docker. El script existente de contrato confirmó 360 movimientos mediante el proxy.
+
+Salida de la segunda revisión:
+
+~~~text
+PASS enum compartido: OperationType
+PASS enum compartido: Category
+PASS enum compartido: BusinessType
+PASS nombres, requeridos y tipos OpenAPI: FacetsResponse
+PASS nombres, requeridos y tipos OpenAPI: AlertEntry
+PASS nombres, requeridos y tipos OpenAPI: CategoryEntry
+PASS nombres, requeridos y tipos OpenAPI: SummaryEntry
+PASS array raiz: AlertsResponse
+PASS array raiz: TopCategoriesResponse
+PASS array raiz: SummaryResponse
+PASS parametros reales opcionales: MetricsParams
+PASS parametros reales opcionales: AlertsParams
+PASS parametros reales opcionales: TopCategoriesParams
+PASS parametros reales opcionales: SummaryParams
+PASS defaults y restricciones numericas OpenAPI
+PASS JSDoc y ausencia de tipos vagos: api-types.ts
+PASS JSDoc y ausencia de tipos vagos: param-types.ts
+PASS configuracion strict incluye specs
+PASS fechas individuales inclusivas y vacios reales de B2B/B2C
+PASS vacio real de alertas con filtro
+PASS casos limite funcionalidad 1 : 8
+PASS casos limite funcionalidad 2 : 8
+PASS casos limite funcionalidad 3 : 8
+PASS estructura de tablas de documentos
+PASS trazabilidad de las 28 casillas
+PASS sin React, fetch, cambios backend ni cambios de dependencias
+PASS tres comprobaciones TypeScript desde terminal normal
+PASS TypeScript estricto dentro de Docker
+Contract OK: create_date, amount, operation_type, category, business_type
+Proxy OK: 360 movements
+Actual period: 2025-10-02 - 2026-09-28
+PASS git diff --check
+~~~
+
+La correspondencia de props/estados en components.md se revisó documentalmente; no se afirma que las firmas Markdown compilen como React. Las diferencias de media histórica frente a ventana de tres y catálogo global frente a catálogo por grupo permanecen explicadas explícitamente y resueltas a nivel de especificación.

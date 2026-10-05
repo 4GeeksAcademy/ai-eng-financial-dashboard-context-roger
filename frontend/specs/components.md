@@ -61,7 +61,7 @@ Si el período elegido tiene menos de cuatro meses, mostrar No hay suficientes p
 
 Props: value: string; error: string | null; disabled: boolean; onChange: (value: string) => void; onApply: (value: number) => void.
 
-Input numérico etiquetado Umbral de incremento (ratio), min=0.01, max=1, step=0.01 y botón Aplicar umbral. Ayuda visible: 0.30 equivale a 30%. Validar número finito en [0.01,1.0], inclusive; step es ayuda de edición, no obligación de múltiplos exactos. Vacío/NaN/fuera de rango: error y mantener umbral aplicado anterior. Un nuevo umbral válido recalcula filas localmente sobre el mismo summary; no dispara una consulta nueva si el rango no cambió. No multiplicar por 100 al enviar un ratio a la API de diagnóstico.
+Input numérico etiquetado Umbral de incremento (ratio), min=0.01, max=1, step=any y botón Aplicar umbral. Ayuda visible: 0.30 equivale a 30%. Validar número finito en [0.01,1.0], inclusive; step=any permite todos los ratios finitos dentro del rango, sin añadir una restricción de múltiplos. Vacío/NaN/fuera de rango: error y mantener umbral aplicado anterior. Un nuevo umbral válido recalcula filas localmente sobre el mismo summary; no dispara una consulta nueva si el rango no cambió. No multiplicar por 100 al enviar un ratio a la API de diagnóstico.
 
 ### OutcomeAlertsTable
 

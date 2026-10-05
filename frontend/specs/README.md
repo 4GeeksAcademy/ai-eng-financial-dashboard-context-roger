@@ -127,6 +127,16 @@ docker compose exec -T frontend npx tsc --noEmit --project tsconfig.app.json
 git diff --check
 ~~~
 
-El primer comando cumple la comprobación solicitada pero tsconfig.json raíz tiene referencias y files=[]; no verifica por sí solo estas specs. specs/tsconfig.json incluye *.ts y strict=true, y el tercer comando verifica src. La comprobación estricta y la comparación de campos con OpenAPI se ejecutaron antes de guardar los tipos; ver verification.md.
+El primer comando cumple la comprobación solicitada pero tsconfig.json raíz tiene referencias y files=[]; no verifica por sí solo estas specs. specs/tsconfig.json incluye *.ts y strict=true, y el tercer comando verifica src. La configuración de specs es independiente y usa types=[] porque estos contratos no requieren Vite ni tipos globales de Node. La comprobación estricta y la comparación de campos con OpenAPI se ejecutaron antes de guardar los tipos; ver verification.md.
 
 Entregar la rama feature/frontend-specs subida al mismo fork, con commits separados para tipos, componentes y contrato. Los archivos de esta carpeta son el entregable. No presentar las funcionalidades como implementadas ni la revisión del agente como revisión personal del alumno. La explicación al alumno precede su entrega al instructor; no se envía ningún mensaje al instructor desde esta tarea.
+
+La revisión requisito por requisito está en [requirement-checklist.md](requirement-checklist.md). Para ejecutar las comprobaciones desde la terminal normal del Codespace, entrar en frontend y usar las dependencias del lockfile:
+
+~~~bash
+cd frontend
+npm ci
+npx tsc --noEmit
+npx tsc --noEmit --project specs/tsconfig.json
+npx tsc --noEmit --project tsconfig.app.json
+~~~
