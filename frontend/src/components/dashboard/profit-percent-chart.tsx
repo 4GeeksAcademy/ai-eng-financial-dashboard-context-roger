@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
-import { Skeleton } from '@/components/ui/skeleton'
+import { ChartLoading } from './chart-loading'
+import { ChartDataTable } from './chart-data-table'
 import { type MonthlyDataPoint } from '@/lib/financial-types'
 import {
   LineChart,
@@ -50,15 +51,7 @@ function CustomTooltip({ active, payload, label }: CustomTooltipProps) {
 export function ProfitPercentChart({ data, loading }: ProfitPercentChartProps) {
   if (loading) {
     return (
-      <Card className="border-border/60">
-        <CardHeader className="pb-4">
-          <Skeleton className="h-5 w-52" />
-          <Skeleton className="h-3 w-64 mt-1" />
-        </CardHeader>
-        <CardContent>
-          <Skeleton className="h-[280px] w-full rounded-lg" />
-        </CardContent>
-      </Card>
+      <ChartLoading title="Profit Margin %" description="Monthly profit as a percentage of total income" />
     )
   }
 
@@ -76,8 +69,9 @@ export function ProfitPercentChart({ data, loading }: ProfitPercentChartProps) {
             No data available to display
           </div>
         ) : (
+          <div aria-hidden="true">
           <ResponsiveContainer width="100%" height={280}>
-            <LineChart data={data} margin={{ top: 4, right: 8, left: 0, bottom: 0 }}>
+            <LineChart accessibilityLayer={false} data={data} margin={{ top: 4, right: 8, left: 0, bottom: 0 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" strokeOpacity={0.6} />
               <XAxis
                 dataKey="month"
@@ -100,13 +94,16 @@ export function ProfitPercentChart({ data, loading }: ProfitPercentChartProps) {
                 dataKey="profitPercent"
                 name="profitPercent"
                 stroke="var(--chart-profit)"
+                isAnimationActive={false}
                 strokeWidth={2}
                 dot={{ r: 3, fill: 'var(--chart-profit)', strokeWidth: 0 }}
                 activeDot={{ r: 5, strokeWidth: 0 }}
               />
             </LineChart>
           </ResponsiveContainer>
+          </div>
         )}
+        {data.length > 0 ? <ChartDataTable data={data} kind="profit" /> : null}
       </CardContent>
     </Card>
   )
