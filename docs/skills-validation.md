@@ -27,4 +27,15 @@ La inspección del DOM y del árbol accesible antes de editar mostró solo el h1
 
 Verificación inicial tras estos cambios: axe-core sin violaciones detectadas (28 comprobaciones aprobadas, contraste incompleto). Se completó la comprobación de contraste mediante conversión de colores OKLCH renderizados a sRGB en canvas y luminancia: texto secundario/card 7.57:1, texto principal/card 15.84:1, curvas/card 5.11:1, 6.05:1 y 6.38:1. Foco usa el color principal. Son mediciones de este tema oscuro, no una certificación global.
 
+## Aplicación de vercel-react-best-practices
+
+- `bundle-dynamic-imports`: App carga financial-charts.tsx mediante React.lazy/Suspense, equivalente compatible con Vite de la recomendación de diferir componentes pesados. Recharts se descarga después de recibir datos; no se carga si la API falla. ChartLoading conserva encabezados y espacio del gráfico y del disclosure; las tarjetas KPI reservan altura. Esta división reduce carga inicial, no promete una reducción del total descargado ni una mejora de LCP medida.
+- `js-combine-iterations`: computeKPIs suma ambos tipos en un recorrido sin arrays intermedios. `js-min-max-loop`: computeDataPeriod calcula extremos en un recorrido sin ordenar todos los movimientos. CurrencyFormatter reutiliza Intl.NumberFormat. Se mantienen fórmulas, formato y fechas de calendario.
+- App cancela el fetch al desmontarse, evitando que una petición cancelada anuncie un error. index.html incorpora título específico, descripción y color-scheme coherente con el dashboard.
+- No se añadieron next/image, next/font ni dependencias Next: no hay fotos de contenido, fuentes remotas ni Next.js en el stack. No se despliega a Vercel ni se cambia proveedor.
+
+Medición comparable: se extrajo el frontend de main `83314f8` a un directorio temporal y se compiló usando los mismos node_modules que la versión modificada (Vite 8.3.3). Baseline: JS único 632.79 kB / gzip 188.20 kB y aviso >500 kB. Modificado: entrada 261.32 kB / gzip 82.28 kB y gráficos diferidos 375.41 kB / gzip 107.85 kB; ningún chunk supera 500 kB. El valor histórico 584.38 kB corresponde a otra resolución de dependencias y no se usa como comparación directa. La advertencia heredada sobre __dirname en Vite se corrige usando import.meta.dirname, compatible con Node 24 del proyecto.
+
+Pruebas financieras existentes: 9 correctas en UTC y America/Los_Angeles después de optimizar; lint y build correctos. Las verificaciones finales incluyen los nuevos casos de presentación.
+
 Tab y Enter abrieron la primera tabla; árbol accesible mostró encabezado h2, disclosure expandido y tabla con meses/importes. Las verificaciones adicionales y la entrega se registran al finalizar. No se atribuyen estas pruebas del agente a la revisión personal del alumno.

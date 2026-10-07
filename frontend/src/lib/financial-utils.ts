@@ -15,13 +15,12 @@ function formatMonthYearLabel(yearMonthKey: string): string {
 }
 
 export function computeKPIs(movements: FinancialMovement[]): KPIMetrics {
-  const totalIncome = movements
-    .filter((m) => m.operation_type === "income")
-    .reduce((sum, m) => sum + m.amount, 0);
-
-  const totalOutcome = movements
-    .filter((m) => m.operation_type === "outcome")
-    .reduce((sum, m) => sum + m.amount, 0);
+  let totalIncome = 0;
+  let totalOutcome = 0;
+  for (const movement of movements) {
+    if (movement.operation_type === "income") totalIncome += movement.amount;
+    else totalOutcome += movement.amount;
+  }
 
   const profit = totalIncome - totalOutcome;
   const profitPercent = totalIncome > 0 ? (profit / totalIncome) * 100 : 0;
@@ -62,13 +61,15 @@ export function computeMonthlyData(
     });
 }
 
-export function formatCurrency(value: number): string {
-  return new Intl.NumberFormat("en-US", {
+const currencyFormatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
-  }).format(value);
+});
+
+export function formatCurrency(value: number): string {
+  return currencyFormatter.format(value);
 }
 
 export function formatPercent(value: number): string {
@@ -77,8 +78,11 @@ export function formatPercent(value: number): string {
 
 export function computeDataPeriod(movements: FinancialMovement[]): string {
   if (movements.length === 0) return "No financial data";
-  const dates = movements.map((movement) => movement.create_date).sort();
-  const first = dates[0];
-  const last = dates[dates.length - 1];
+  let first = movements[0].create_date;
+  let last = first;
+  for (const movement of movements) {
+    if (movement.create_date < first) first = movement.create_date;
+    if (movement.create_date > last) last = movement.create_date;
+  }
   return first === last ? first : `${first} - ${last}`;
 }
