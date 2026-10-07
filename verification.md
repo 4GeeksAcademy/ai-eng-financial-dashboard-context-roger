@@ -67,4 +67,5 @@ El analisis de la sesion previa es una pista, no una prueba actual. El arranque,
 - docs/check-api-contract.py: contrato correcto, proxy con 360 movimientos y período real 2025-10-02 - 2026-09-28 en el host de verificación.
 - UI de producción comprobada con teclado, escritorio/móvil y simulaciones de carga/vacío/error/equilibrio. axe sin violaciones detectadas; contraste completado con medición sRGB. Evidencia, trazabilidad, comparación de bundles y límites en docs/skills-validation.md.
 - memory-bank/progress.md actualiza el estado del proyecto. No se atribuye al alumno la revisión personal de las mejoras realizadas por el agente.
-- GitHub/PR y Codespaces se registran al completar la entrega; no se hace merge ni se envían mensajes al instructor.
+- Codespaces recibió los commits por fast-forward y confirmó el push. Compose arrancó ambos servicios; frontend lint/build y 14 pruebas en ambas zonas con exit 0, backend 15 pruebas correctas y contrato/proxy correctos con 360 movimientos. El túnel privado presenta error de forwarding en la autenticación; la UI se verificó en producción local sin modificar visibilidad ni proxy.
+- PR abierto contra main: https://github.com/4GeeksAcademy/ai-eng-financial-dashboard-context-roger/pull/1. No se hace merge ni se envían mensajes al instructor. Queda la revisión personal del alumno.
