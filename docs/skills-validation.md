@@ -38,4 +38,12 @@ Medición comparable: se extrajo el frontend de main `83314f8` a un directorio t
 
 Pruebas financieras existentes: 9 correctas en UTC y America/Los_Angeles después de optimizar; lint y build correctos. Las verificaciones finales incluyen los nuevos casos de presentación.
 
+## Skill interna creada, cargada y aplicada
+
+Se usó skill-creator para redactar `.skills/financial-chart-integrity/SKILL.md`, con objetivo, entradas, procedimiento y aceptación específicos del repositorio. AGENTS.md incorpora su ubicación para descubrimiento. Se volvió a leer el archivo antes de aplicarlo; quick_validate.py devuelve `Skill is valid!`.
+
+Tarea real: ambos componentes chart decidían si había datos comparando valores con cero. Siguiendo el paso 2 de la skill, ahora la decisión usa `data.length > 0`. Se verifica en financial-charts.test.tsx el equilibrio (100 ingresos/100 gastos), movimientos cero, pérdidas, solo gastos, vacío y carga. Las tablas reciben exactamente las mismas props que las curvas y usan los formateadores de lib.
+
+Frontend: 14 pruebas aprobadas en UTC y America/Los_Angeles, lint correcto y build sin advertencias. Build final local: entrada 261.32 kB/gzip 82.29 kB; gráficos 375.37 kB/gzip 107.83 kB. Backend: 15 pruebas aprobadas, con la deprecación heredada de TestClient/httpx. No se cambian dependencias ni backend para ocultarla.
+
 Tab y Enter abrieron la primera tabla; árbol accesible mostró encabezado h2, disclosure expandido y tabla con meses/importes. Las verificaciones adicionales y la entrega se registran al finalizar. No se atribuyen estas pruebas del agente a la revisión personal del alumno.
