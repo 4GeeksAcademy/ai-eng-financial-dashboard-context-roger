@@ -7,5 +7,6 @@ Antes de actuar, leer [AGENTS.md](../AGENTS.md), las [reglas del proyecto](../.a
 - [Producto](product-overview.md): propósito, comportamiento y alcance implementado.
 - [Stack y ejecución](technical-context.md): tecnologías, flujo de datos, setup y comprobaciones.
 - [Estado actual](current-state.md): cambios verificados, límites y prioridades de entrega.
+- [Progreso de skills](progress.md): skills aplicadas, verificación y aprendizaje del proyecto actual.
 
 La memoria resume el estado actual. [verification.md](../verification.md) conserva el rastro histórico; [rules-validation.md](../docs/rules-validation.md) registra las tareas usadas para validar las reglas. Si el código cambia, contrastar sus afirmaciones y actualizar la memoria con fecha y evidencia. Las comprobaciones registradas son del agente; no sustituyen la revisión personal del alumno.

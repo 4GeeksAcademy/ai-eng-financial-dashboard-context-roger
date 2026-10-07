@@ -1,4 +1,8 @@
-# Estado actual — 2026-10-02
+# Estado actual — 2026-10-07
+
+La línea base de calidad actual es la del [proyecto de skills](progress.md): accessibility y vercel-react-best-practices aplicadas, webapp-testing como skill adicional, skill interna financial-chart-integrity y pruebas de cero/vacío. Frontend: 14 pruebas en dos zonas horarias, build/lint correctos y gráficos diferidos; backend: 15 pruebas correctas con deprecación heredada. Evidencia y límites en [skills-validation.md](../docs/skills-validation.md). La memoria y reglas anteriores se conservan; los resultados de abajo son historia del 2 de octubre.
+
+## Estado anterior — 2026-10-02
 
 ## Trabajo verificado
 

@@ -58,3 +58,13 @@ El analisis de la sesion previa es una pista, no una prueba actual. El arranque,
 - ✅ La memoria no inventa una hoja de ruta: distingue datos simulados, API implementada, funciones usadas por App, resultados de fase 3 y límites pendientes.
 - Esta fase modifica solo documentación. No se ejecutaron nuevas pruebas de aplicación; las 9 pruebas frontend, 15 backend, build y lint citados son los resultados de fase 3.
 - Pendiente: revisión personal del alumno, push de los commits al fork y envío de la entrega. No se afirma que estas acciones estén realizadas.
+
+## Proyecto de skills — 2026-10-07
+
+- Se confirmó origin/main en 83314f8: las fases anteriores están en GitHub. Se trabaja en feature/agent-skills sobre ese mismo repo.
+- Skills cargadas/aplicadas: accessibility, vercel-react-best-practices, webapp-testing y .skills/financial-chart-integrity. La última se validó con quick_validate.py y se aplicó a la confusión de 0% con ausencia.
+- Frontend: lint/build correctos, 14 pruebas en UTC y America/Los_Angeles. Backend: 15 pruebas correctas y una deprecación heredada de TestClient/httpx.
+- docs/check-api-contract.py: contrato correcto, proxy con 360 movimientos y período real 2025-10-02 - 2026-09-28 en el host de verificación.
+- UI de producción comprobada con teclado, escritorio/móvil y simulaciones de carga/vacío/error/equilibrio. axe sin violaciones detectadas; contraste completado con medición sRGB. Evidencia, trazabilidad, comparación de bundles y límites en docs/skills-validation.md.
+- memory-bank/progress.md actualiza el estado del proyecto. No se atribuye al alumno la revisión personal de las mejoras realizadas por el agente.
+- GitHub/PR y Codespaces se registran al completar la entrega; no se hace merge ni se envían mensajes al instructor.

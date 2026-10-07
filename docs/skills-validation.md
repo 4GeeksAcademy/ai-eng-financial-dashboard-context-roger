@@ -46,4 +46,42 @@ Tarea real: ambos componentes chart decidían si había datos comparando valores
 
 Frontend: 14 pruebas aprobadas en UTC y America/Los_Angeles, lint correcto y build sin advertencias. Build final local: entrada 261.32 kB/gzip 82.29 kB; gráficos 375.37 kB/gzip 107.83 kB. Backend: 15 pruebas aprobadas, con la deprecación heredada de TestClient/httpx. No se cambian dependencias ni backend para ocultarla.
 
+## Skill adicional: webapp-testing
+
+Se aplicó su flujo reconnaissance-then-action: esperar la interfaz, inspeccionar DOM/árbol accesible, localizar controles por texto/rol, ejecutar interacción y comprobar estado, capturas y consola. El navegador se controló con las APIs Playwright/CDP de CUA disponibles en esta sesión, en lugar de Python Playwright, para respetar la restricción de herramientas del entorno. No se afirma que se haya creado una suite Python de extremo a extremo. Las pruebas Vitest anteriores cubren la regresión financiera; estas comprobaciones cubren la interfaz renderizada.
+
+Se probó la compilación de producción con `npm run preview -- --host 127.0.0.1 --port 4173` y proxy local a Uvicorn. Esta alternativa es solo para el host Windows de verificación; el setup de Codespaces sigue siendo Docker Compose y no se cambia su .env.local ni su destino de proxy.
+
+| Escenario ejecutado | Resultado observado |
+|---|---|
+| Datos reales | 12 meses en ambas tablas, importes y porcentajes disponibles, sin errores/warnings de consola antes de simular fallos. |
+| Teclado | Enter abre primera tabla; Tab pasa por su región y llega al segundo summary; Space abre segunda; foco visible y sin controles enfocados dentro de SVG oculto. |
+| Móvil 390 y 320 CSS px | Sin desbordamiento horizontal de la página; tablas caben en 223px a 320px; summary mide 44px de alto. |
+| Alto contraste | forced-colors emulado: textos, controles y contorno de foco siguen visibles. No equivale a prueba con Windows High Contrast real. |
+| API lenta | Intercepción temporal de /api/metrics: status de carga, ambas secciones busy=true, 20 skeletons, sin gráficos confirmados. |
+| Reduced motion | Preferencia emulada mientras carga: animation-name de skeleton = none. |
+| API vacía [] | Período No financial data, dos mensajes sin datos y ninguna tabla. |
+| API 503 | Error en role=alert/lang=es, KPIs con guion y aviso de gráficos no disponibles. El fallo de red simulado es esperado. |
+| Equilibrio 100/100 | Beneficio $0, margen 0.0%, tabla Jan 2026/0.0%, sin mensaje de ausencia. |
+| Reauditoría | axe-core sin violaciones detectadas, 28 comprobaciones aprobadas; contraste marcado incompleto se complementa con las mediciones anteriores. |
+
+Las respuestas simuladas, estilos de emulación e inyección temporal de axe se restauran mediante limpieza de intercepción y recarga; no modifican datos del backend. Capturas de escritorio/móvil guardadas fuera del repositorio. No se ejecutó NVDA ni se confirmó zoom real de navegador al 200%; no se afirma conformidad WCAG completa. Estos límites no se convierten en funcionalidades o cambios fuera del proyecto.
+
+Para repetir el flujo: iniciar servicios documentados, abrir el dashboard, usar Tab/Enter/Space para ambas tablas y revisar móvil; usar el inspector de red para simular carga/503/[] y una respuesta de equilibrio, restaurando la API al terminar. Contrastar columnas con las props MonthlyDataPoint y los KPIs con computeKPIs. Ejecutar lint/build/test antes de guardar la entrega.
+
+## Correspondencia con la evaluación
+
+| Criterio del proyecto | Evidencia de esta entrega |
+|---|---|
+| Dos skills asignadas cargadas/aplicadas | SKILL.md instalados, tabla de instrucciones/archivos y commits bd95217 / c792939. |
+| Accesibilidad básica verificada | Árbol accesible, teclado, tablas/caption/scope, role/status/alert, contrastes medidos y chequeo de iconos decorativos. No hay img de contenido. |
+| Build documentado sin nuevas advertencias | npm run build; tamaños medidos y advertencia heredada corregida. |
+| Skill adicional descubierta/aplicada | find testing/performance; webapp-testing con justificación y escenarios anteriores. |
+| Skill interna específica en .skills | financial-chart-integrity, estructura completa, cargada y aplicada a cero/ausencia; commit 566287f. |
+| Memory bank preciso | progress.md y actualización fechada de current-state.md. |
+| Rama/commits claros | feature/agent-skills, commits por aplicación y evidencia. |
+| Mejora dirigida y revisada | Se conserva diseño, contrato, fórmulas y stack; diff y pruebas revisados por el agente. La revisión personal del alumno se mantiene como paso de aprendizaje pendiente. |
+
+La entrega pide PR contra main. La URL y la comprobación de Codespaces se incorporan tras realizar esos pasos; no se envían mensajes al instructor ni se hace merge como parte de este proyecto.
+
 Tab y Enter abrieron la primera tabla; árbol accesible mostró encabezado h2, disclosure expandido y tabla con meses/importes. Las verificaciones adicionales y la entrega se registran al finalizar. No se atribuyen estas pruebas del agente a la revisión personal del alumno.
